@@ -208,15 +208,18 @@ function handleTrigger(distance) {
             top: '30px',
             opacity: OPACITY,
             duration: 0,
-            zIndex: -1
+            delay: 0
         });
 
-        anime({
-            targets: targets[index + 2 > 3 ? index - 2 : index + 2],
-            left: "70%",
-            duration: 180,
-            easing: 'linear'
-        });
+        // setTimeout(() => {
+            anime({
+                targets: targets[index + 2 > 3 ? index - 2 : index + 2],
+                left: "70%",
+                duration: 180,
+                easing: 'linear',
+                delay: 0
+            });
+        // }, 0);
         
         index = next;
 
