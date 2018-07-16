@@ -4,9 +4,13 @@
 }
 
 html, body {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  // background-color: #290063;
+  background-color: #400009;
+  overflow: hidden;
 }
 
 @keyframes rotate {
@@ -18,78 +22,66 @@ html, body {
   }
 }
 
-.swipe {
-  overflow: hidden;
-  visibility: hidden;
-  position: relative;
-  height: 100%;
-}
-.swipe-wrap {
-  overflow: hidden;
-  position: relative;
-  height: 100%;
-}
-.swipe-wrap > div {
-  float:left;
-  width:100%;
-  height: 100%;
-  position: relative;
-
-  color: #fff;
-  font-size: 30px;
-  font-weight: bold;
-}
-
-// .career {
-//   background-color: #250060;
-// }
-
-// .fortune {
-//   background-color: #3d0034;
-// }
-
-// .love {
-//   background-color: #400010;
-// }
-
-// .health {
-//   background-color: #02004a;
-// }
-
-#canvas {
-  display: block;
-  width: 300px;
-  height: 300px;
-  // background-color: #fff;
-  border: 1px solid #fff;
-  margin: 100px auto;
-}
-
-
-.container {
+.lights {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
 
-  & > div {
+  .light {
     position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
     width: 100%;
     height: 100%;
+    transition: opacity .2s linear;
+  }
+
+  .love-light {
+    opacity: 1;
+    background: url("./assets/love_light.png") center/cover no-repeat;
+  }
+
+  .career-light {
+    opacity: 0;
+    background: url("./assets/career_light.png") center/cover no-repeat;
+  }
+
+  .money-light {
+    opacity: 0;
+    background: url("./assets/money_light.png") center/cover no-repeat;
+  }
+
+  .health-light {
+    opacity: 0;
+    background: url("./assets/health_light.png") center/cover no-repeat;
   }
 }
 
-.career {
-  background-color: #2e005f;
-  // background-image: radial-gradient(#ff00ea, #2e005f);
-  .light {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
+.container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+  & > div {
     width: 100%;
     height: 100%;
-    background: url('./assets/career_light.png') center/cover no-repeat;
+    overflow: hidden;
+  }
+}
 
+.each-item {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  top: 30px;
+  opacity: 0.6;
     .arrow {
       position: absolute;
       z-index: 100;
@@ -108,11 +100,7 @@ html, body {
       height: 250px;
 
       border-radius: 50%;
-      // box-shadow: 0 0 500px 5px #ff00ea;
-      // -webkit-box-shadow: 0 0 500px 5px #ff00ea;
-      // -moz-box-shadow: 0 0 500px 5px #ff00ea;
-      background: url('./assets/career_plate.png') center/contain no-repeat;
-      // animation: rotate linear 1s infinite;
+      background: url('./assets/love_plate.png') center/contain no-repeat;
       z-index: 10;
 
       .each-result {
@@ -122,7 +110,7 @@ html, body {
         height: 100%;
         font-size: 14px;
         word-break: break-all;
-
+        z-index: 10;
         // transform: rotate(45deg);
 
         .result-text {
@@ -151,6 +139,37 @@ html, body {
         }
       }
     }
+}
+
+.health {
+  left: -70%;
+  transform: scale(.8);
+  .turnplate {
+    background: url('./assets/health_plate.png') center/contain no-repeat;
+  }
+}
+
+.love {
+  left: 0;
+  top: 0;
+  opacity: 1;
+}
+
+.career {
+  left: 70%;
+  transform: scale(.8);
+
+  .turnplate {
+    background: url('./assets/career_plate.png') center/contain no-repeat;
+  }
+}
+
+.money {
+  left: 180%;
+  transform: scale(.8);
+
+  .turnplate {
+    background: url('./assets/money_plate.png') center/contain no-repeat;
   }
 }
 
@@ -202,6 +221,7 @@ html, body {
   position: absolute;
   left: 50%;
   bottom: 10%;
+  z-index: 100000;
 
   width: 70%;
   height: 56px;

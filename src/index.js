@@ -1,20 +1,9 @@
 import './index.scss';
+import addSwipeEvent from './event';
 
-import Swipe from './swipe';
-import anime from 'animejs';
+addSwipeEvent();
 
-const btn = document.getElementById('start-btn');
-const plate = document.querySelector('.career .turnplate');
 
-btn.addEventListener('touchstart', function() {
-
-    anime({
-        targets: plate,
-        rotate: '3.8turn',
-        easing: 'easeOutSine',
-        duration: 5000,
-    });
-});
 // window.mySwipe = new Swipe(document.getElementById('slider'), {
 //     startSlide: 2,
 //     speed: 400,
