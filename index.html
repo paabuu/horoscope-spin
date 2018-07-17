@@ -4,67 +4,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Spin To Turn Your Day Around</title>
 </head>
 <body>
-    <p class="title title-1">Spin to Turn Your</p>
-    <p class="title title-2">Day Around</p>
-    <p class="type" id="type">LOVE</p>
-    <div class="lights">
-        <div class="light health-light"></div>
-        <div class="light love-light"></div>
-        <div class="light career-light"></div>
-        <div class="light money-light"></div>
-    </div>
-    <div class="container" id="container">
-        <div class="health each-item">
-            <p class="arrow"></p>
-            <div class="turnplate">
-                <div class="each-result"><p class="result-text">000</p></div>
-                <div class="each-result"><p class="result-text">UNDERSTANDING</p></div>
-                <div class="each-result"><p class="result-text">TENDER</p></div>
-                <div class="each-result"><p class="result-text">NOSTALGIC</p></div>
-                <div class="each-result"><p class="result-text">FRESH</p></div>
-                <div class="each-result"><p class="result-text">LOYAL</p></div>
+    <!-- 转盘页 -->
+    <div class="horoscope-spin">
+        <p class="title title-1">Spin to Turn Your</p>
+        <p class="title title-2">Day Around</p>
+        <p class="type" id="type">LOVE</p>
+        <div class="lights">
+            <div class="light health-light"></div>
+            <div class="light love-light"></div>
+            <div class="light career-light"></div>
+            <div class="light money-light"></div>
+        </div>
+        <div class="container" id="container">
+            <div class="health each-item">
+                <p class="arrow"></p>
+                <div class="turnplate"></div>
+                <div class="shadow"></div>
+            </div>
+            <div class="love each-item">
+                <p class="arrow"></p>
+                <div class="turnplate"></div>
+                <div class="shadow"></div>
+            </div>
+            <div class="career each-item">
+                <p class="arrow"></p>
+                <div class="turnplate"></div>
+                <div class="shadow"></div>
+            </div>
+            <div class="money each-item">
+                <p class="arrow"></p>
+                <div class="turnplate"></div>
+                <div class="shadow"></div>
             </div>
         </div>
-        <div class="love each-item">
-            <p class="arrow"></p>
-            <div class="turnplate">
-                <div class="each-result"><p class="result-text">111</p></div>
-                <div class="each-result"><p class="result-text">UNDERSTANDING</p></div>
-                <div class="each-result"><p class="result-text">TENDER</p></div>
-                <div class="each-result"><p class="result-text">NOSTALGIC</p></div>
-                <div class="each-result"><p class="result-text">FRESH</p></div>
-                <div class="each-result"><p class="result-text">LOYAL</p></div>
-            </div>
-        </div>
-        <div class="career each-item">
-            <p class="arrow"></p>
-            <div class="turnplate">
-                <div class="each-result"><p class="result-text">222</p></div>
-                <div class="each-result"><p class="result-text">UNDERSTANDING</p></div>
-                <div class="each-result"><p class="result-text">TENDER</p></div>
-                <div class="each-result"><p class="result-text">NOSTALGIC</p></div>
-                <div class="each-result"><p class="result-text">FRESH</p></div>
-                <div class="each-result"><p class="result-text">LOYAL</p></div>
-            </div>
-        </div>
-        <div class="money each-item">
-            <p class="arrow"></p>
-            <div class="turnplate">
-                <div class="each-result"><p class="result-text">333</p></div>
-                <div class="each-result"><p class="result-text">UNDERSTANDING</p></div>
-                <div class="each-result"><p class="result-text">TENDER</p></div>
-                <div class="each-result"><p class="result-text">NOSTALGIC</p></div>
-                <div class="each-result"><p class="result-text">FRESH</p></div>
-                <div class="each-result"><p class="result-text">LOYAL</p></div>
-            </div>
-        </div>
+
+        <div class="start-btn" id="start-btn">START</div>
     </div>
 
-    <div class="start-btn" id="start-btn">START</div>
-
-    <!-- <canvas id="canvas" width="300" height="300"></canvas> -->
+    <!-- 单个结果页 -->
+    <div class="single-result">
+        <p class="fortune-text">Fortune</p>
+        <p class="you-got-text">You Got</p>
+        <p class="result-keywords" id="result-keywords"></p>
+        <div class="bg-light"></div>
+        <p class="next-button" id="single-next-button">NEXT</p>
+    </div>
+    <!-- 总结果页 -->
+    <div class="final-result">
+        <p class="result-title">You Got All</p>
+        <ul class="result-all" id="result-all"></ul>
+        <div class="bg-light"></div>
+        <p class="next-button" id="final-next-button">TRY TOMORROW</p>
+    </div>
 </body>
 </html>

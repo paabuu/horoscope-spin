@@ -1,13 +1,12 @@
 import anime from 'animejs';
+import $ from 'jquery';
 
+window.index = 1;
 let x = 0;
-let index = 1;
 const container = document.getElementById("container");
 const targets = document.querySelectorAll(".container .each-item");
-const paltes = document.querySelectorAll(".container .each-item .turnplate");
 const lights = document.querySelectorAll(".lights .light");
 const typeDom = document.getElementById("type");
-const startBtn = document.getElementById("start-btn");
 
 const w = document.body.clientWidth * 0.7;
 const MIN_SWIPE_DISTANCE = 70;
@@ -31,6 +30,8 @@ function addSwipeEvent() {
     });
 
     container.addEventListener("touchend", function(e) {
+        if (window.isSpinning) return;
+
         const { clientX } = e.changedTouches[0];
         const distance = clientX - x;
 
@@ -93,7 +94,7 @@ function handleAnime(distance) {
 }
 
 // 手指离开屏幕
-function handleTrigger(distance) {
+export function handleTrigger(distance) {
     if (distance > MIN_SWIPE_DISTANCE) {
         const next = index - 1 < 0 ? 3 : index - 1;
         handleLightChange(next);
@@ -101,7 +102,7 @@ function handleTrigger(distance) {
 
         // 背景颜色
         anime({
-            targets: document.body,
+            targets: ".horoscope-spin",
             backgroundColor: COLORS[next],
             duration: DURATION,
             easing: 'linear'
@@ -164,7 +165,7 @@ function handleTrigger(distance) {
 
         // 背景颜色
         anime({
-            targets: document.body,
+            targets: ".horoscope-spin",
             backgroundColor: COLORS[next],
             duration: DURATION,
             easing: 'linear'
@@ -211,47 +212,26 @@ function handleTrigger(distance) {
             delay: 0
         });
 
-        // setTimeout(() => {
-            anime({
-                targets: targets[index + 2 > 3 ? index - 2 : index + 2],
-                left: "70%",
-                duration: 180,
-                easing: 'linear',
-                delay: 0
-            });
-        // }, 0);
+        anime({
+            targets: targets[index + 2 > 3 ? index - 2 : index + 2],
+            left: "70%",
+            duration: 180,
+            easing: 'linear',
+            delay: 0
+        });
         
         index = next;
+    }
+    handleHasPlayed();
+}
 
+function handleHasPlayed() {
+    const result = window.results[window.index];
+    if (result) {
+        $("#start-btn").addClass("has-played");
+        $(`#container .${TYPES[window.index].toLowerCase()} .shadow`).text(result).show();
     } else {
-        return;
-        // 放弃移动，回到原位
-        anime({
-            targets: targets[index],
-            left: `0px`,
-            scale: 1,
-            top: 0,
-            duration: DURATION,
-            easing: 'linear'
-        });
-
-        anime({
-            targets: targets[index + 1 > 3 ? 0 : index + 1],
-            left: `${w}px`,
-            scale: 0.8,
-            top: '30px',
-            duration: DURATION,
-            easing: 'linear'
-        });
-
-        anime({
-            targets: targets[index - 1 < 0 ? 3 : index - 1],
-            left: `${-w}px`,
-            scale: 0.8,
-            top: '30px',
-            duration: DURATION,
-            easing: 'linear'
-        });
+        $("#start-btn").removeClass("has-played");
     }
 }
 
@@ -261,15 +241,5 @@ function handleLightChange(index) {
     }
     lights[index].style.opacity = 1;
 }
-
-startBtn.addEventListener('touchend', function(e) {
-    console.log(paltes[index]);
-    anime({
-        targets: paltes[index],
-        rotate: '3.8turn',
-        easing: 'easeOutSine',
-        duration: 5000,
-    });
-}, true);
 
 export default addSwipeEvent;

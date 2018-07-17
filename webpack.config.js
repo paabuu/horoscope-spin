@@ -34,6 +34,10 @@ module.exports = {
                         limit: 8192
                     }
                 }
+            },
+            {
+                test: /\.ttf$/,
+                use: 'url-loader'
             }
         ]
     },
