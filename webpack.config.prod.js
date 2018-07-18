@@ -1,17 +1,18 @@
 const path = require('path');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
     entry: {
         full: './src/fullscreen.js',
         mini: './src/miniscreen.js'
     },
-    mode: 'development',
+    mode: 'production',
     output: {
         filename: '[name].[chunkHash:5].js',
         path: path.resolve(__dirname, 'dist'),
-        publicPath: '/'
+        publicPath: './'
     },
     module: {
         rules: [
@@ -49,6 +50,7 @@ module.exports = {
         host: '0.0.0.0'
     },
     plugins: [
+        new CleanWebpackPlugin([path.resolve(__dirname, 'dist')]),
         new MiniCssExtractPlugin({
             filename: '[name].[hash:5].css'
         }),

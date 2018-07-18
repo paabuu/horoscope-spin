@@ -1,4 +1,4 @@
-import './scss/index.scss';
+import './scss/full/index.scss';
 import addSwipeEvent from './js/spin_animation';
 import renderSpin from './js/render_spin';
 

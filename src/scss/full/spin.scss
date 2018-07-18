@@ -36,22 +36,22 @@
   
     .love-light {
       opacity: 1;
-      background: url("../assets/love_light.png") center/cover no-repeat;
+      background: url("../../assets/love_light.png") center/cover no-repeat;
     }
   
     .career-light {
       opacity: 0;
-      background: url("../assets/career_light.png") center/cover no-repeat;
+      background: url("../../assets/career_light.png") center/cover no-repeat;
     }
   
     .money-light {
       opacity: 0;
-      background: url("../assets/money_light.png") center/cover no-repeat;
+      background: url("../../assets/money_light.png") center/cover no-repeat;
     }
   
     .health-light {
       opacity: 0;
-      background: url("../assets/health_light.png") center/cover no-repeat;
+      background: url("../../assets/health_light.png") center/cover no-repeat;
     }
   }
   
@@ -86,7 +86,7 @@
   
         width: 50px;
         height: 82px;
-        background: url('../assets/arrow.png') center/contain no-repeat;
+        background: url('../../assets/arrow.png') center/contain no-repeat;
       }
   
       .shadow {
@@ -113,7 +113,7 @@
         height: 250px;
   
         border-radius: 50%;
-        background: url('../assets/love_plate.png') center/contain no-repeat;
+        background: url('../../assets/love_plate.png') center/contain no-repeat;
         z-index: 10;
   
         .each-result {
@@ -159,7 +159,7 @@
     left: -70%;
     transform: scale(.8);
     .turnplate {
-      background: url('../assets/health_plate.png') center/contain no-repeat;
+      background: url('../../assets/health_plate.png') center/contain no-repeat;
     }
   }
   
@@ -174,7 +174,7 @@
     transform: scale(.8);
   
     .turnplate {
-      background: url('../assets/career_plate.png') center/contain no-repeat;
+      background: url('../../assets/career_plate.png') center/contain no-repeat;
     }
   }
   
@@ -183,7 +183,7 @@
     transform: scale(.8);
   
     .turnplate {
-      background: url('../assets/money_plate.png') center/contain no-repeat;
+      background: url('../../assets/money_plate.png') center/contain no-repeat;
     }
   }
   
