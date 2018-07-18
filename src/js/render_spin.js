@@ -2,11 +2,11 @@ import anime from 'animejs';
 import $ from 'jquery';
 
 import keywords from './keywords';
-import { handleTrigger } from './spin_animation';
+import { handleTrigger, handleHasPlayed } from './spin_animation';
 
 const startBtn = document.getElementById("start-btn");
 const paltes = document.querySelectorAll(".container .each-item .turnplate");
-const singleResultButton = document.getElementById("single-next-button");
+// const singleResultButton = document.getElementById("single-next-button");
 const types = ["health", "love", "career", "money"];
 
 function renderSpin() {
@@ -30,61 +30,68 @@ function renderSpin() {
             const result = window.keywords[window.index][resultIndex];
             
             window.results[window.index] = result;
-
-            $("#result-keywords").text(result);
+            // handleTrigger(-300);
+            alert("广告！");
+            setTimeout(() => {
+                handleHasPlayed();
+            }, 200);
+            // 显示单个结果页
+            // $("#result-keywords").text(result);
             // $(".horoscope-spin").hide();
             // $(".single-result").show();
-            anime({
-                targets: '.single-result',
-                top: 0,
-                duration: 500,
-                easing: 'linear'
-            });
+            // anime({
+            //     targets: '.single-result',
+            //     top: 0,
+            //     duration: 500,
+            //     easing: 'linear'
+            // });
         };
     }, true);
 
-    singleResultButton.addEventListener("touchend", function() {
-        const finalResults = window.results.filter(item => !!item);
-        if (finalResults.length === 4) {
-            finalResults.forEach((item, i) => {
-                $("#result-all").append($(
-                    `<li>
-                        <p class="_type">${types[i]}</p>
-                        <p class="_keywords">${item}</p>
-                    </li>`
-                ));
-            });
-            anime({
-                targets: '.final-result',
-                left: 0,
-                duration: 300,
-                easing: 'linear'
-            });
+    // singleResultButton.addEventListener("touchend", function() {
+    //     const finalResults = window.results.filter(item => !!item);
 
-            anime({
-                targets: '.single-result',
-                left: "-100%",
-                duration: 500,
-                easing: 'linear'
-            });
+    //     // 显示总结果页
+    //     if (finalResults.length === 4) {
+    //         finalResults.forEach((item, i) => {
+    //             $("#result-all").append($(
+    //                 `<li>
+    //                     <p class="_type">${types[i]}</p>
+    //                     <p class="_keywords">${item}</p>
+    //                 </li>`
+    //             ));
+    //         });
+    //         anime({
+    //             targets: '.final-result',
+    //             left: 0,
+    //             duration: 300,
+    //             easing: 'linear'
+    //         });
 
-            document
-            .getElementById("final-next-button")
-            .addEventListener("touchend", function() {
-                window.location.reload();
-            }, true);
+    //         anime({
+    //             targets: '.single-result',
+    //             left: "-100%",
+    //             duration: 500,
+    //             easing: 'linear'
+    //         });
 
-        } else {
-            anime({
-                targets: '.single-result',
-                top: '-200vh',
-                duration: 500,
-                easing: 'linear'
-            }).complete = () => {
-                handleTrigger(-300);
-            };
-        }
-    }, true);
+    //         document
+    //         .getElementById("final-next-button")
+    //         .addEventListener("touchend", function() {
+    //             window.location.reload();
+    //         }, true);
+
+    //     } else {
+    //         anime({
+    //             targets: '.single-result',
+    //             top: '-200vh',
+    //             duration: 500,
+    //             easing: 'linear'
+    //         }).complete = () => {
+    //             handleTrigger(-300);
+    //         };
+    //     }
+    // }, true);
 }
 
 function getKeywords() {
@@ -112,7 +119,7 @@ function renderKeywords() {
 }
 
 function getResultByAngel(angel) {
-    const offset = 2;
+    const offset = 1;
     switch(true) {
         case angel <= 30 - offset:
             return 0;

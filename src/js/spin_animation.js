@@ -225,11 +225,11 @@ export function handleTrigger(distance) {
     handleHasPlayed();
 }
 
-function handleHasPlayed() {
+export function handleHasPlayed() {
     const result = window.results[window.index];
     if (result) {
         $("#start-btn").addClass("has-played");
-        $(`#container .${TYPES[window.index].toLowerCase()} .shadow`).text(result).show();
+        $(`#container .${TYPES[window.index].toLowerCase()} .shadow`).text(result.toUpperCase()).show();
     } else {
         $("#start-btn").removeClass("has-played");
     }
