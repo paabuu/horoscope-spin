@@ -1,6 +1,6 @@
 import './scss/full/index.scss';
-import addSwipeEvent from './js/spin_animation';
-import renderSpin from './js/render_spin';
+import addSwipeEvent from './js/full/move';
+import renderSpin from './js/full/render';
 
 /**
  * 全局变量

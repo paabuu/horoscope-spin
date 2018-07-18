@@ -1,0 +1,241 @@
+@import '../common.scss';
+
+@keyframes rotate {
+    from {
+      transform: rotate(0)
+    }
+    to {
+      transform: rotate(360deg)
+    }
+  }
+
+  .horoscope-spin {
+    // display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #400009;
+  }
+  
+  .lights {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  
+    .light {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: block;
+      width: 100%;
+      height: 100%;
+      transition: opacity .2s linear;
+    }
+  
+    .love-light {
+      opacity: 1;
+      background: url("../../assets/love_light.png") center/cover no-repeat;
+    }
+  
+    .career-light {
+      opacity: 0;
+      background: url("../../assets/career_light.png") center/cover no-repeat;
+    }
+  
+    .money-light {
+      opacity: 0;
+      background: url("../../assets/money_light.png") center/cover no-repeat;
+    }
+  
+    .health-light {
+      opacity: 0;
+      background: url("../../assets/health_light.png") center/cover no-repeat;
+    }
+  }
+  
+  .container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1;
+    & > div {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+  }
+  
+  .each-item {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    opacity: 0.6;
+      .arrow {
+        position: absolute;
+        z-index: 100;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50px);
+  
+        width: 50px;
+        height: 82px;
+        background: url('../../assets/arrow.png') center/contain no-repeat;
+      }
+  
+      .shadow {
+        display: none;
+        position: absolute;
+        width: 45vw;
+        height: 45vw;
+        z-index: 100;
+    
+        font-family: 'Gill Sans';
+        color: #fff;
+        font-size: 26px;
+        text-align: center;
+        font-weight: bold;
+        line-height: 40vw;
+    
+        border-radius: 50%;
+        background-color: rgba(0, 0, 0, .6);
+      }
+
+      .turnplate {
+        position: relative;
+        width: 45vw;
+        height: 45vw;
+  
+        border-radius: 50%;
+        background: url('../../assets/love_plate.png') center/contain no-repeat;
+        z-index: 10;
+  
+        .each-result {
+          position: absolute;
+          list-style: none;
+          width: 100%;
+          height: 100%;
+          font-size: 12px;
+          word-break: break-all;
+          z-index: 10;
+  
+          .result-text {
+            width: 25%;
+            text-align: center;
+            line-height: 1.2;
+            margin: 5vw auto;
+            color: #fff;
+            text-shadow: -1px 1px 2px #ccc;
+            font-family: Arial Rounded MT Bold;
+          }
+  
+          &:nth-of-type(2) {
+            transform: rotate(60deg);
+          }
+          &:nth-of-type(3) {
+            transform: rotate(120deg);
+          }
+          &:nth-of-type(4) {
+            transform: rotate(180deg);
+          }
+          &:nth-of-type(5) {
+            transform: rotate(240deg);
+          }
+          &:nth-of-type(6) {
+            transform: rotate(300deg);
+          }
+        }
+      }
+  }
+  
+  .health {
+    left: -50%;
+    transform: scale(.7);
+    .turnplate {
+      background: url('../../assets/health_plate.png') center/contain no-repeat;
+    }
+  }
+  
+  .love {
+    left: 0;
+    top: 0;
+    opacity: 1;
+  }
+  
+  .career {
+    left: 50%;
+    transform: scale(.7);
+  
+    .turnplate {
+      background: url('../../assets/career_plate.png') center/contain no-repeat;
+    }
+  }
+  
+  .money {
+    left: 180%;
+    transform: scale(.7);
+  
+    .turnplate {
+      background: url('../../assets/money_plate.png') center/contain no-repeat;
+    }
+  }
+
+  .type {
+    position: absolute;
+    top: 3%;
+  
+    width: 100%;
+    height: 50px;
+  
+    line-height: 50px;
+    font-size: 24px;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+  
+    font-family: Gill Sans;
+  
+    z-index: 10;
+  }
+  
+  .start-btn {
+    position: absolute;
+    left: 50%;
+    bottom: 5%;
+    z-index: 100000;
+    overflow: hidden;
+  
+    width: 40%;
+    height: 36px;
+    transform: translateX(-50%);
+    
+    border-radius: 30px;
+    background-image: linear-gradient(#f8c78e,#e8695b);
+    color: #fff;
+    line-height: 36px;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: Arial Rounded MT Bold;
+    text-align: center;
+  }
+
+  .has-played {
+    &::before {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, .6);
+    }
+
+  }

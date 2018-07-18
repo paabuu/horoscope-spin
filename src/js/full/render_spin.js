@@ -1,8 +1,8 @@
-import anime from 'animejs';
+import anime from '../../../../../Library/Caches/typescript/2.9/node_modules/@types/animejs';
 import $ from 'jquery';
 
 import keywords from './keywords';
-import { handleTrigger, handleHasPlayed } from './spin_animation';
+import { handleTrigger, handleHasPlayed } from './move';
 
 const startBtn = document.getElementById("start-btn");
 const paltes = document.querySelectorAll(".container .each-item .turnplate");
