@@ -29,10 +29,10 @@ function renderSpin() {
             const result = window.keywords[window.index][resultIndex];
             
             window.results[window.index] = result;
-            alert("广告！");
             setTimeout(() => {
                 handleHasPlayed();
             }, 200);
+            window.showAd.showInterstitialAd();
         };
     }, true);
 }
