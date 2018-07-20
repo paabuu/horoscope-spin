@@ -1,3 +1,5 @@
+require('babel-polyfill');
+
 import './scss/mini/index.scss';
 import addSwipeEvent from './js/mini/move';
 import renderSpin from './js/mini/render';

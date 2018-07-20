@@ -1,3 +1,5 @@
+require('babel-polyfill');
+
 import './scss/full/index.scss';
 import addSwipeEvent from './js/full/move';
 import renderSpin from './js/full/render';
@@ -9,6 +11,7 @@ import renderSpin from './js/full/render';
  * @param {array} keywords: 每个方向的关键字数组 
  * @param {array} results: 每个转盘的结果
  */
+
 window.index = 1;
 window.isSpinning = false;
 window.keywords = [];

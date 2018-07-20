@@ -1,6 +1,6 @@
 import anime from 'animejs';
-import $ from 'jquery';
 
+const $ = window.$ || window.jQuery;
 window.index = 1;
 let x = 0;
 const container = document.getElementById("container");
@@ -23,6 +23,7 @@ function handleMove(e) {
 
 function addSwipeEvent() {
     container.addEventListener("touchstart", function(e) {
+        e.preventDefault();
         const { clientX } = e.targetTouches[0];
         x = clientX;
 
@@ -91,20 +92,24 @@ export function handleTrigger(distance) {
         });
         
         // 左边补位
-        anime({
-            targets: targets[index - 2 < 0 ? index + 2 : index - 2],
-            left: `-100%`,
-            scale: 0.7,
-            duration: 0,
-            opacity: OPACITY,
-            // delay: 1000
-        });
+        setTimeout(() => {
+            anime({
+                targets: targets[index - 2 < 0 ? index + 2 : index - 2],
+                left: `-100%`,
+                scale: 0.7,
+                duration: 0,
+                opacity: OPACITY,
+                // delay: 1000
+            });
+        })
+
 
         anime({
             targets: targets[index - 2 < 0 ? index + 2 : index - 2],
             left: `-50%`,
-            duration: 180,
-            easing: 'linear'
+            duration: 100,
+            easing: 'linear',
+            delay: 50
         });
 
         index = next;
@@ -152,21 +157,23 @@ export function handleTrigger(distance) {
         });
 
         // 右边补位
-        anime({
-            targets: targets[index + 2 > 3 ? index - 2 : index + 2],
-            left: "100%",
-            scale: 0.7,
-            opacity: OPACITY,
-            duration: 0,
-            delay: 0
+        setTimeout(() => {
+            anime({
+                targets: targets[index + 2 > 3 ? index - 2 : index + 2],
+                left: "100%",
+                scale: 0.7,
+                opacity: OPACITY,
+                duration: 0,
+                delay: 0
+            });
         });
 
         anime({
             targets: targets[index + 2 > 3 ? index - 2 : index + 2],
             left: "50%",
-            duration: 180,
+            duration: 100,
             easing: 'linear',
-            delay: 0
+            delay: 50
         });
         
         index = next;
@@ -177,10 +184,10 @@ export function handleTrigger(distance) {
 export function handleHasPlayed() {
     const result = window.results[window.index];
     if (result) {
-        $("#start-btn").addClass("has-played");
+        $("#start-btn").text("TRY AGAIN");
         $(`#container .${TYPES[window.index].toLowerCase()} .shadow`).text(result.toUpperCase()).show();
     } else {
-        $("#start-btn").removeClass("has-played");
+        $("#start-btn").text("START");
     }
 }
 
