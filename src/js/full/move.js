@@ -246,3 +246,5 @@ function handleLightChange(index) {
 }
 
 export default addSwipeEvent;
+
+window.switchToNextSpin = () => setTimeout(() => handleTrigger(-90), 800);
